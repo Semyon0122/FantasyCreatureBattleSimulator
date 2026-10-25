@@ -8,8 +8,10 @@ public class AmuletMasterCreator : IEntityCreator
     private const int InitialAttackPower = 5;
     private const int InitialHealth = 2;
 
-    public IEntity Create()
+    public IEntity Create(AttackPower? attackPower = null, HealthPoints? health = null)
     {
-        return new AmuletMaster(new HealthPoints(InitialHealth), new HealthPoints(InitialAttackPower));
+        return new AmuletMaster(
+            attackPower ?? new AttackPower(InitialAttackPower),
+            health ?? new HealthPoints(InitialHealth));
     }
 }

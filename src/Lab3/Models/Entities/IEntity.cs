@@ -6,11 +6,11 @@ public interface IEntity
 {
     void Attack(Entity target);
 
-    void TakeDamage(HealthPoints damage);
+    void TakeDamage(AttackPower damage);
 
     void RestoreHealth(HealthPoints health);
 
-    void AddAttack(HealthPoints attack);
+    void AddAttack(AttackPower attack);
 
     bool IsDead();
 }

@@ -6,15 +6,15 @@ public class ViciousFighter : Entity
 {
     private const int AttackBonus = 2;
 
-    public ViciousFighter(HealthPoints health, HealthPoints attackPower) : base(health, attackPower) { }
+    public ViciousFighter(AttackPower attackPower, HealthPoints health) : base(attackPower, health) { }
 
-    public override void TakeDamage(HealthPoints damage)
+    public override void TakeDamage(AttackPower damage)
     {
         base.TakeDamage(damage);
 
         if (!IsDead())
         {
-            AttackPower *= AttackBonus;
+            AttackPowerValue *= AttackBonus;
         }
     }
 }

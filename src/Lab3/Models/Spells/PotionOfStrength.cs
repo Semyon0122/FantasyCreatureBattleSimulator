@@ -9,7 +9,7 @@ public class PotionOfStrength : ISpell
 
     public IEntity Apply(IEntity entity)
     {
-        entity.AddAttack(new HealthPoints(AddingStrength));
+        entity.AddAttack(new AttackPower(AddingStrength));
 
         return entity;
     }

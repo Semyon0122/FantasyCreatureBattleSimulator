@@ -10,12 +10,12 @@ public class ImmortalNightmare : Entity
 
     private int _counterRebirth;
 
-    public ImmortalNightmare(HealthPoints health, HealthPoints attackPower) : base(health, attackPower)
+    public ImmortalNightmare(AttackPower attackPower, HealthPoints health) : base(attackPower, health)
     {
         _counterRebirth = CounterInitialValue;
     }
 
-    public override void TakeDamage(HealthPoints damage)
+    public override void TakeDamage(AttackPower damage)
     {
         base.TakeDamage(damage);
 

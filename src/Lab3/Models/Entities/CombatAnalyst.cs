@@ -6,11 +6,11 @@ public class CombatAnalyst : Entity
 {
     private const int AttackBonus = 3;
 
-    public CombatAnalyst(HealthPoints health, HealthPoints attackPower) : base(health, attackPower) { }
+    public CombatAnalyst(AttackPower attackPower, HealthPoints health) : base(attackPower, health) { }
 
     public override void Attack(Entity target)
     {
-        AttackPower += AttackBonus;
+        AttackPowerValue += AttackBonus;
 
         base.Attack(target);
     }

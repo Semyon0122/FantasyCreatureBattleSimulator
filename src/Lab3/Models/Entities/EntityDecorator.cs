@@ -16,7 +16,7 @@ public abstract class EntityDecorator : IEntity
         Inner.Attack(target);
     }
 
-    public virtual void TakeDamage(HealthPoints damage)
+    public virtual void TakeDamage(AttackPower damage)
     {
         Inner.TakeDamage(damage);
     }
@@ -26,7 +26,7 @@ public abstract class EntityDecorator : IEntity
         Inner.RestoreHealth(health);
     }
 
-    public void AddAttack(HealthPoints attack)
+    public void AddAttack(AttackPower attack)
     {
         Inner.AddAttack(attack);
     }

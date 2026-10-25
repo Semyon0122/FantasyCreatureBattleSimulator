@@ -12,7 +12,7 @@ public class MagicShield : EntityDecorator
         _isUsed = false;
     }
 
-    public override void TakeDamage(HealthPoints damage)
+    public override void TakeDamage(AttackPower damage)
     {
         if (!_isUsed)
         {
