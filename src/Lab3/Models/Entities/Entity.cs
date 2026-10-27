@@ -34,6 +34,11 @@ public abstract class Entity : IEntity
         AttackPowerValue += attack;
     }
 
+    public bool IsAbleToAttack()
+    {
+        return AttackPowerValue > 0;
+    }
+
     public bool IsDead()
     {
         return Health <= 0;

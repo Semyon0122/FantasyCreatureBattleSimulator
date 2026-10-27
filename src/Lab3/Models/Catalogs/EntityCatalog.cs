@@ -1,25 +1,27 @@
-using Itmo.ObjectOrientedProgramming.Lab3.Models.Entities;
+using Itmo.ObjectOrientedProgramming.Lab3.Models.Builders;
+using Itmo.ObjectOrientedProgramming.Lab3.Models.Builders.EntityBuilderSteps;
+using Itmo.ObjectOrientedProgramming.Lab3.Models.EntityCreators;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Models.Catalogs;
 
 public class EntityCatalog : IEntityCatalog
 {
-    private readonly Dictionary<string, IEntity> _storage;
+    private readonly Dictionary<string, IEntityCreator> _storage;
 
-    public EntityCatalog(IDictionary<string, IEntity> storage)
+    public EntityCatalog(IDictionary<string, IEntityCreator> storage)
     {
         _storage = storage.ToDictionary();
     }
 
-    public IEntity CreateEntityByName(string name)
+    public IEntityStep CreateEntityByName(string name)
     {
-        _storage.TryGetValue(name, out IEntity? entity);
+        _storage.TryGetValue(name, out IEntityCreator? entityCreator);
 
-        if (entity is null)
+        if (entityCreator is null)
         {
             throw new KeyNotFoundException($"Key {name} is not found!");
         }
 
-        return entity;
+        return EntityBuilder.Create().WithEntity(entityCreator);
     }
 }

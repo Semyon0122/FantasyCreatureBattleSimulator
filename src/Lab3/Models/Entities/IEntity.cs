@@ -12,5 +12,7 @@ public interface IEntity
 
     void AddAttack(AttackPower attack);
 
+    bool IsAbleToAttack();
+
     bool IsDead();
 }

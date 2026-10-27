@@ -31,6 +31,11 @@ public abstract class EntityDecorator : IEntity
         Inner.AddAttack(attack);
     }
 
+    public bool IsAbleToAttack()
+    {
+        return Inner.IsAbleToAttack();
+    }
+
     public bool IsDead()
     {
         return Inner.IsDead();

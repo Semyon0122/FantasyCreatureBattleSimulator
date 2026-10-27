@@ -1,8 +1,8 @@
-using Itmo.ObjectOrientedProgramming.Lab3.Models.Entities;
+using Itmo.ObjectOrientedProgramming.Lab3.Models.Builders.EntityBuilderSteps;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Models.Catalogs;
 
 public interface IEntityCatalog
 {
-    IEntity CreateEntityByName(string name);
+    IEntityStep CreateEntityByName(string name);
 }
