@@ -6,11 +6,16 @@ public class MimicChest : Entity
 {
     public MimicChest(AttackPower attackPower, HealthPoints health) : base(attackPower, health) { }
 
-    public override void Attack(Entity target)
+    public override void Attack(IEntity target)
     {
-        AttackPowerValue = AttackPower.Max(AttackPowerValue, target.AttackPowerValue);
+        AttackValue = AttackPower.Max(AttackValue, target.AttackValue);
         Health = HealthPoints.Max(Health, target.Health);
 
         base.Attack(target);
+    }
+
+    public override IEntity Clone()
+    {
+        return new MimicChest(AttackValue, Health);
     }
 }

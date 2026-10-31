@@ -4,7 +4,11 @@ namespace Itmo.ObjectOrientedProgramming.Lab3.Models.Entities;
 
 public interface IEntity
 {
-    void Attack(Entity target);
+    AttackPower AttackValue { get; }
+
+    HealthPoints Health { get; }
+
+    void Attack(IEntity target);
 
     void TakeDamage(AttackPower damage);
 
@@ -15,4 +19,6 @@ public interface IEntity
     bool IsAbleToAttack();
 
     bool IsDead();
+
+    IEntity Clone();
 }

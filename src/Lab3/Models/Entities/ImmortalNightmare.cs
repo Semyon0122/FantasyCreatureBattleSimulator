@@ -25,4 +25,9 @@ public class ImmortalNightmare : Entity
             _counterRebirth++;
         }
     }
+
+    public override IEntity Clone()
+    {
+        return new ImmortalNightmare(AttackValue, Health);
+    }
 }

@@ -9,7 +9,15 @@ public class GameTable : IGameTable
 {
     private const int MaxEntityCount = 7;
 
-    private readonly List<EntityHolder> _storage = new();
+    private readonly List<EntityHolder> _storage;
+
+    public string NickName { get; }
+
+    public GameTable(string nickName)
+    {
+        _storage = new List<EntityHolder>();
+        NickName = nickName;
+    }
 
     public void AddEntity(IEntity entity)
     {
@@ -34,14 +42,14 @@ public class GameTable : IGameTable
 
             if (entity.IsAbleToAttack() && !entity.IsDead())
             {
-                return new GetAttackingEntityResult.Success(entity, i % _storage.Count);
+                return new GetAttackingEntityResult.Success(entity, (i + 1) % _storage.Count);
             }
         }
 
         return new GetAttackingEntityResult.Failure("No entities can attack!");
     }
 
-    public SelectAttackedEntityResult SelectAttackedEntity()
+    public GetAttackedEntityResult GetAttackedEntity()
     {
         var livingEntities = new List<EntityHolder>();
 
@@ -55,11 +63,23 @@ public class GameTable : IGameTable
 
         if (livingEntities.Count == 0)
         {
-            return new SelectAttackedEntityResult.Failure("There is no living entities remain!");
+            return new GetAttackedEntityResult.Failure("There is no living entities remain!");
         }
 
         EntityHolder entity = livingEntities[RandomNumberGenerator.GetInt32(livingEntities.Count)];
 
-        return new SelectAttackedEntityResult.Success(entity);
+        return new GetAttackedEntityResult.Success(entity);
+    }
+
+    public IGameTable Clone()
+    {
+        var newTable = new GameTable(NickName);
+
+        foreach (EntityHolder entity in _storage)
+        {
+            newTable.AddEntity((EntityHolder)entity.Clone());
+        }
+
+        return newTable;
     }
 }

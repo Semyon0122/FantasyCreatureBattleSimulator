@@ -6,7 +6,7 @@ public class AttackingProwess : EntityDecorator
 {
     public AttackingProwess(IEntity inner) : base(inner) { }
 
-    public override void Attack(Entity target)
+    public override void Attack(IEntity target)
     {
         base.Attack(target);
 
@@ -14,5 +14,10 @@ public class AttackingProwess : EntityDecorator
         {
             base.Attack(target);
         }
+    }
+
+    public override IEntity Clone()
+    {
+        return new AttackingProwess(Inner.Clone());
     }
 }

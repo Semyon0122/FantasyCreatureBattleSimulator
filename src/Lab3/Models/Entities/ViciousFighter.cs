@@ -14,7 +14,12 @@ public class ViciousFighter : Entity
 
         if (!IsDead())
         {
-            AttackPowerValue *= AttackBonus;
+            AttackValue *= AttackBonus;
         }
+    }
+
+    public override IEntity Clone()
+    {
+        return new ViciousFighter(AttackValue, Health);
     }
 }

@@ -4,19 +4,19 @@ namespace Itmo.ObjectOrientedProgramming.Lab3.Models.Entities;
 
 public abstract class Entity : IEntity
 {
-    public AttackPower AttackPowerValue { get; protected set; }
+    public AttackPower AttackValue { get; protected set; }
 
     public HealthPoints Health { get; protected set; }
 
     protected Entity(AttackPower attackPower, HealthPoints health)
     {
-        AttackPowerValue = attackPower;
+        AttackValue = attackPower;
         Health = health;
     }
 
-    public virtual void Attack(Entity target)
+    public virtual void Attack(IEntity target)
     {
-        target.TakeDamage(AttackPowerValue);
+        target.TakeDamage(AttackValue);
     }
 
     public virtual void TakeDamage(AttackPower damage)
@@ -31,16 +31,18 @@ public abstract class Entity : IEntity
 
     public void AddAttack(AttackPower attack)
     {
-        AttackPowerValue += attack;
+        AttackValue += attack;
     }
 
     public bool IsAbleToAttack()
     {
-        return AttackPowerValue > 0;
+        return AttackValue > 0;
     }
 
     public bool IsDead()
     {
         return Health <= 0;
     }
+
+    public abstract IEntity Clone();
 }

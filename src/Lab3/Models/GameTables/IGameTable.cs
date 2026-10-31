@@ -4,7 +4,11 @@ namespace Itmo.ObjectOrientedProgramming.Lab3.Models.GameTables;
 
 public interface IGameTable
 {
+    string NickName { get; }
+
     GetAttackingEntityResult GetAttackingEntity(int number);
 
-    SelectAttackedEntityResult SelectAttackedEntity();
+    GetAttackedEntityResult GetAttackedEntity();
+
+    IGameTable Clone();
 }

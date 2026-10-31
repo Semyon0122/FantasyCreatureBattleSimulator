@@ -8,10 +8,15 @@ public class CombatAnalyst : Entity
 
     public CombatAnalyst(AttackPower attackPower, HealthPoints health) : base(attackPower, health) { }
 
-    public override void Attack(Entity target)
+    public override void Attack(IEntity target)
     {
-        AttackPowerValue += AttackBonus;
+        AttackValue += AttackBonus;
 
         base.Attack(target);
+    }
+
+    public override IEntity Clone()
+    {
+        return new CombatAnalyst(AttackValue, Health);
     }
 }

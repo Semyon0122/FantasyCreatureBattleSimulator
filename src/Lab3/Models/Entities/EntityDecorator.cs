@@ -4,6 +4,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab3.Models.Entities;
 
 public abstract class EntityDecorator : IEntity
 {
+    public AttackPower AttackValue => Inner.AttackValue;
+
+    public HealthPoints Health => Inner.Health;
+
     protected IEntity Inner { get; set; }
 
     protected EntityDecorator(IEntity inner)
@@ -11,7 +15,7 @@ public abstract class EntityDecorator : IEntity
         Inner = inner;
     }
 
-    public virtual void Attack(Entity target)
+    public virtual void Attack(IEntity target)
     {
         Inner.Attack(target);
     }
@@ -40,4 +44,6 @@ public abstract class EntityDecorator : IEntity
     {
         return Inner.IsDead();
     }
+
+    public abstract IEntity Clone();
 }

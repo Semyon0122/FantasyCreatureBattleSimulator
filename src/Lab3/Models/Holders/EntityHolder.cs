@@ -17,4 +17,9 @@ public class EntityHolder : EntityDecorator
     {
         Inner = modifier.Apply(Inner);
     }
+
+    public override IEntity Clone()
+    {
+        return new EntityHolder(Inner.Clone());
+    }
 }

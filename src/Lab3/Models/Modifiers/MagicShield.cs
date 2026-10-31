@@ -22,4 +22,9 @@ public class MagicShield : EntityDecorator
 
         base.TakeDamage(damage);
     }
+
+    public override IEntity Clone()
+    {
+        return new MagicShield(Inner.Clone());
+    }
 }

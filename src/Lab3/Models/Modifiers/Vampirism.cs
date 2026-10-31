@@ -9,10 +9,15 @@ public class Vampirism : EntityDecorator
 
     public Vampirism(IEntity inner) : base(inner) { }
 
-    public override void Attack(Entity target)
+    public override void Attack(IEntity target)
     {
         base.Attack(target);
 
         RestoreHealth(new HealthPoints(RestoringHealth));
+    }
+
+    public override IEntity Clone()
+    {
+        return new Vampirism(Inner.Clone());
     }
 }
