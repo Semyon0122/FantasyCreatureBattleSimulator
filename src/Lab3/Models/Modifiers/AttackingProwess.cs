@@ -10,7 +10,7 @@ public class AttackingProwess : EntityDecorator
     {
         base.Attack(target);
 
-        if (!Inner.IsDead())
+        if (!target.IsDead())
         {
             base.Attack(target);
         }

@@ -21,6 +21,12 @@ public abstract class Entity : IEntity
 
     public virtual void TakeDamage(AttackPower damage)
     {
+        if (Health < damage)
+        {
+            Health = new(0);
+            return;
+        }
+
         Health -= damage;
     }
 

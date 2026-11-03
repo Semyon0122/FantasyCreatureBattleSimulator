@@ -1,6 +1,6 @@
 namespace Itmo.ObjectOrientedProgramming.Lab3.Models.ValueObjects;
 
-public class AttackPower
+public record AttackPower
 {
     public int Value { get; }
 

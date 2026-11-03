@@ -3,9 +3,9 @@ using Itmo.ObjectOrientedProgramming.Lab3.Models.GameTables;
 using Itmo.ObjectOrientedProgramming.Lab3.Models.ValueObjects;
 using Itmo.ObjectOrientedProgramming.Lab3.ResultTypes.GameTableResultTypes;
 
-namespace Itmo.ObjectOrientedProgramming.Lab3.Models.Battle;
+namespace Itmo.ObjectOrientedProgramming.Lab3.Models.BattleLaunchers;
 
-public class Battle : IBattle
+public class BattleLauncher : IBattleLauncher
 {
     public string LaunchBattle(IGameTable player1, IGameTable player2)
     {

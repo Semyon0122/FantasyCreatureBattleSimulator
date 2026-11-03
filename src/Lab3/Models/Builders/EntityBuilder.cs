@@ -53,7 +53,7 @@ public class EntityBuilder : ICreateStep, IEntityStep, IModifierStep, IHealthSte
 
         foreach (IModifierApplier applier in _modifiers)
         {
-            applier.Apply(entity);
+            entity = applier.Apply(entity);
         }
 
         return entity;
